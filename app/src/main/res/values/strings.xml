@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">test</string>
+    <string name="email">Email</string>
+    <string name="telefon">Telefon</string>
+    <string name="name">Name</string>
+    <string name="adress">Adress</string>
+    <string name="bid">Bud</string>
+    <string name="main_text">Buda på ditt drömhus</string>
+    <string name="SendBid">Skicka bud</string>
 </resources>
