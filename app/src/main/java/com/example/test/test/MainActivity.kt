@@ -10,6 +10,7 @@ import android.widget.Toast
 import android.view.Menu
 import android.view.MenuItem
 import android.content.Intent
+import android.graphics.Color
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
@@ -17,12 +18,16 @@ import com.android.volley.VolleyError
 import com.android.volley.toolbox.StringRequest
 import org.json.JSONException
 import org.json.JSONObject
+import android.graphics.drawable.ColorDrawable
+
+
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val bidButton = findViewById(R.id.button) as Button
         bidButton.setOnClickListener() {
             Toast.makeText(this@MainActivity, "Bud skickat", Toast.LENGTH_SHORT).show()
