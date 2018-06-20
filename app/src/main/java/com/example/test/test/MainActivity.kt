@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         val bidButton = findViewById(R.id.button) as Button
         bidButton.setOnClickListener() {
-            Toast.makeText(this@MainActivity, "Bud skickat", Toast.LENGTH_SHORT).show()
+       //     Toast.makeText(this@MainActivity, "Bud skickat", Toast.LENGTH_SHORT).show()
             addArtist()
         }
     }
@@ -48,14 +48,20 @@ class MainActivity : AppCompatActivity() {
         val adress = findViewById<EditText>(R.id.editText13).text.toString()
         val bid = findViewById<EditText>(R.id.editText14).text.toString()
 
+
+
+
         //creating volley string request
-        val stringRequest = object : StringRequest(Request.Method.POST, EndPoints.URL_ADD_BID,
+        val stringRequest = object : StringRequest(Request.Method.POST, EndPoints.URL_ROOT,
                 Response.Listener<String> { response ->
                     try {
+
                         val obj = JSONObject(response)
                         Toast.makeText(applicationContext, obj.getString("message"), Toast.LENGTH_LONG).show()
                     } catch (e: JSONException) {
                         e.printStackTrace()
+                        Toast.makeText(applicationContext, "ERRORRRR", Toast.LENGTH_LONG).show()
+
                     }
                 },
                 object : Response.ErrorListener {
@@ -66,16 +72,19 @@ class MainActivity : AppCompatActivity() {
             @Throws(AuthFailureError::class)
             override fun getParams(): Map<String, String> {
                 val params = HashMap<String, String>()
-                params.put("Namn", name)
-                params.put("Telefon", phone)
-                params.put("Mail", mail)
-                params.put("Adress", adress)
-                params.put("Bud", bid)
+                Toast.makeText(applicationContext, "TEST123", Toast.LENGTH_LONG).show()
+
+                params.put("namn", name)
+                params.put("telefon", phone)
+                params.put("mail", mail)
+                params.put("adress", adress)
+                params.put("bud", bid)
+                Toast.makeText(applicationContext, "TEST123", Toast.LENGTH_LONG).show()
+
                 return params
             }
         }
 
-        //adding request to queue
         VolleySingleton.instance?.addToRequestQueue(stringRequest)
     }
 
