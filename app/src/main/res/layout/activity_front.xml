@@ -15,7 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:elevation="2dp"
-        android:text="@string/SendBid"
+        android:text="Skicka bud"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="30sp"
         android:textStyle="bold"
