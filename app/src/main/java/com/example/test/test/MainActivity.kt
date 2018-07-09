@@ -1,5 +1,6 @@
 package com.example.test.test
 
+import android.app.Application
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,7 +20,7 @@ import com.android.volley.toolbox.StringRequest
 import org.json.JSONException
 import org.json.JSONObject
 import android.graphics.drawable.ColorDrawable
-
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,16 @@ class MainActivity : AppCompatActivity() {
         val bidButton = findViewById(R.id.button) as Button
         bidButton.setOnClickListener() {
             Toast.makeText(this@MainActivity, "Bud skickat", Toast.LENGTH_SHORT).show()
-            addArtist()
+            saveToFile()
+        }
+    }
+    private fun saveToFile(){
+        val adress = findViewById<EditText>(R.id.editText13).text.toString()
+        val bid = findViewById<EditText>(R.id.editText14).text.toString()
+        val filename = "savedBids"
+        val fileContents = adress+" "+bid+"\n"
+        applicationContext.openFileOutput(filename,Application.MODE_PRIVATE).use {
+            it.write(fileContents.toByteArray())
         }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,9 +63,11 @@ class MainActivity : AppCompatActivity() {
                 Response.Listener<String> { response ->
                     try {
                         val obj = JSONObject(response)
-                        Toast.makeText(applicationContext, obj.getString("message"), Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainActivity, "test", Toast.LENGTH_LONG).show()
+                        Log.d("myTag", "Tryy")
                     } catch (e: JSONException) {
                         e.printStackTrace()
+                        Log.d("myTag", "catch")
                     }
                 },
                 object : Response.ErrorListener {
@@ -72,6 +84,7 @@ class MainActivity : AppCompatActivity() {
                 params.put("Adress", adress)
                 params.put("Bud", bid)
                 return params
+                Log.d("myTag","test")
             }
         }
 

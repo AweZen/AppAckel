@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.RadioButton
 import android.widget.Toast
 
 class frontActivity : AppCompatActivity() {
@@ -19,6 +20,11 @@ class frontActivity : AppCompatActivity() {
         bidButton.setOnClickListener() {
             val inputIntent = Intent(this@frontActivity, MainActivity::class.java)
             startActivity(inputIntent)
+        }
+        val prevBidsButton=findViewById(R.id.prevBids)as RadioButton
+        prevBidsButton.setOnClickListener(){
+            val intent = Intent(this@frontActivity,prev_bids::class.java)
+            startActivity(intent)
         }
 
 

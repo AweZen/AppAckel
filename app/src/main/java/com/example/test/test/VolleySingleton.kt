@@ -5,9 +5,6 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.Volley
 
-/**
- * Created by Belal on 5/16/2017.
- */
 class VolleySingleton : Application() {
     override fun onCreate() {
         super.onCreate()
